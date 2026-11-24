@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Islem Jmaguer – Portfolio Data &amp; BI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F4;--ink:#14213D;--muted:#52627A;--line:#CBD5DC;--accent:#0B7F82;--warm:#C9791A;--surface:#E2E9ED;
+  --display:"Bricolage Grotesque","Trebuchet MS",sans-serif;--body:"Instrument Sans","Segoe UI",Arial,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A24;--ink:#E6EDF2;--muted:#9AAAB6;--line:#26384A;--accent:#4FD1C5;--warm:#F2B562;--surface:#162532}}
+:root[data-theme="dark"]{--bg:#0F1A24;--ink:#E6EDF2;--muted:#9AAAB6;--line:#26384A;--accent:#4FD1C5;--warm:#F2B562;--surface:#162532}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--body)}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--warm);outline-offset:3px;border-radius:4px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+nav{display:flex;gap:22px;justify-content:flex-end;padding:22px 0;font-weight:500;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:36px 0 72px}
+h1{font:700 clamp(2.6rem,7vw,4.6rem)/1 var(--display);letter-spacing:-.02em;margin:0 0 20px}
+.role{font:500 1.35rem/1.35 var(--display);color:var(--accent);margin:0 0 16px}
+.lead{max-width:52ch;color:var(--muted);margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 20px;border-radius:999px;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:600}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+.schema{width:100%;height:auto}
+.schema .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.schema .fact{fill:var(--warm);stroke:none}
+.schema line{stroke:var(--muted);stroke-width:1.5}
+.schema text{font:600 14px var(--body);fill:var(--ink);text-anchor:middle}
+.schema .fact-t{fill:#14213D;font-size:15px}
+.schema .sm{font:400 11px var(--body);fill:var(--muted)}
+.stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.stats li{padding:22px 16px 22px 0;border-bottom:1px solid var(--line)}
+.stats li:nth-child(odd){border-right:1px solid var(--line)}
+.stats li:nth-child(even){padding-left:24px}
+.stats b{display:block;font:700 3rem/1 var(--display);color:var(--accent);letter-spacing:-.02em}
+.stats span{display:block;margin-top:8px;color:var(--muted);font-size:.95rem;line-height:1.35}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font:700 2rem/1.1 var(--display);margin:0 0 32px;letter-spacing:-.01em}
+.proj{display:grid;grid-template-columns:200px 1fr;gap:12px 32px;padding:26px 0;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:0;padding-top:0}
+.proj .meta{color:var(--muted);font-size:.92rem}
+.proj .meta b{display:block;color:var(--ink);font-weight:600}
+h3{font:700 1.3rem/1.25 var(--display);margin:0 0 8px}
+.proj ul{margin:10px 0 0;padding-left:1.1em;max-width:68ch}
+.proj li{margin:4px 0}
+.links{display:flex;gap:16px;margin-top:12px;font-weight:600;font-size:.95rem;flex-wrap:wrap}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+h4{font:700 1.1rem var(--display);margin:0 0 10px;color:var(--accent)}
+.skills p{margin:0;color:var(--muted)}
+.row{display:grid;grid-template-columns:200px 1fr;gap:4px 32px;margin-bottom:22px}
+.row .meta{color:var(--muted);font-size:.92rem}
+.row strong{font-weight:600}
+.row p{margin:4px 0 0;color:var(--muted)}
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:48px}
+.two ul{margin:0;padding:0;list-style:none}
+.two li{padding:9px 0;border-top:1px solid var(--line)}
+.two li:first-child{border-top:0}
+.two small{display:block;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:56px 0 64px}
+footer p{max-width:50ch;color:var(--muted)}
+@media (max-width:760px){
+  .hero,.two,.skills{grid-template-columns:1fr}
+  .proj,.row{grid-template-columns:1fr}
+  nav{justify-content:flex-start}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Navigation principale">
+  <a href="#projets">Projets</a><a href="#competences">Compétences</a><a href="#parcours">Parcours</a><a href="#contact">Contact</a>
+</nav>
+
+<header class="hero">
+  <div>
+    <h1>Islem Jmaguer</h1>
+    <p class="role">Étudiante en informatique de gestion, spécialité Business Intelligence</p>
+    <p class="lead">Je conçois des entrepôts de données, des pipelines ETL et des tableaux de bord, puis je construis des applications web et mobiles autour. Je cherche un stage de fin d’études en data / BI.</p>
+    <div class="btns">
+      <a class="btn main" href="mailto:Jmaguerislem.14@gmail.com">M’écrire</a>
+      <a class="btn" href="#projets">Voir mes projets</a>
+    </div>
+  </div>
+  <ul class="stats" aria-label="Chiffres clés">
+    <li><b>5</b><span>projets complets, de la data au mobile</span></li>
+    <li><b>3</b><span>bases de données : PostgreSQL, MySQL, Oracle</span></li>
+    <li><b>4</b><span>sprints Agile/Scrum menés en équipe</span></li>
+    <li><b>5</b><span>langues, dont l’arabe, le français et le turc couramment</span></li>
+  </ul>
+</header>
+
+<section id="projets">
+  <h2>Projets</h2>
+
+  <article class="proj">
+    <div class="meta"><b>2025 – 2026</b>PostgreSQL, Python, pandas, pygrametl, Matplotlib<br>Projet académique</div>
+    <div>
+      <h3>Entrepôt de données e-commerce et tableau de bord BI</h3>
+      <ul>
+        <li>Entrepôt PostgreSQL en schéma en étoile : une table de faits Ventes et 4 dimensions (Client, Produit, Temps, Commande).</li>
+        <li>Pipeline ETL en Python avec audit de la qualité des données et chargement sécurisé par upsert.</li>
+        <li>KPI définis (chiffre d’affaires, panier moyen, satisfaction client, croissance des ventes) et tableau de bord Matplotlib connecté en direct à l’entrepôt.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="meta"><b>2026</b>React, Flutter, Node.js, Express, PostgreSQL, Docker<br>Projet académique</div>
+    <div>
+      <h3>Gestion scolaire multi-écoles (SaaS)</h3>
+      <p style="margin:0;max-width:68ch">Plateforme web et application mobile pour écoles primaires : 6 rôles, bulletins PDF, paiements, messagerie et notifications push.</p>
+      <ul>
+        <li>Données isolées entre écoles grâce au Row-Level Security de PostgreSQL, authentification JWT.</li>
+        <li>Déploiement avec Docker sur Render et Neon.</li>
+      </ul>
+      <div class="links"><a href="https://ecole-app-hpz2.onrender.com">Voir le site</a><a href="https://github.com/jmaguerislem/ecole-app">Code sur GitHub</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="meta"><b>2026</b>Flutter, Dart, Java 21, Spring Boot, JWT, PostgreSQL</div>
+    <div>
+      <h3>TeamPulse Pro, gestion de projets et de tâches en équipe</h3>
+      <ul>
+        <li>Application mobile Flutter : tableau Kanban, calendrier des échéances, alertes de retard automatiques, tableau de bord et rapports PDF.</li>
+        <li>API REST Java 21 / Spring Boot sécurisée (Spring Security, JWT, BCrypt), JPA/Hibernate, données cloisonnées par équipe.</li>
+      </ul>
+      <div class="links"><a href="https://github.com/jmaguerislem/TeamPulse">Code sur GitHub</a></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="meta"><b>2025 – 2026</b>PHP, MySQL, MVC, Scrum<br>Projet académique</div>
+    <div>
+      <h3>Plateforme municipale de gestion des réclamations</h3>
+      <ul>
+        <li>Application web pour trois rôles (citoyen, agent, administrateur) : notifications par email (PHPMailer) et affectation automatique des réclamations.</li>
+        <li>Architecture MVC et pattern DAO (PDO), développée en Agile/Scrum sur 4 sprints, avec 11 fonctionnalités livrées.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="meta"><b>2025 – 2026</b>UML, Processus Unifié, IBM RSA<br>Projet académique</div>
+    <div>
+      <h3>SGRH, système de gestion des ressources humaines</h3>
+      <ul><li>Suite UML complète avec IBM RSA : 31 cas d’utilisation, 5 acteurs, diagrammes de classes, de séquence et de déploiement.</li></ul>
+    </div>
+  </article>
+</section>
+
+<section id="competences">
+  <h2>Compétences</h2>
+  <div class="skills">
+    <div><h4>Data et BI</h4><p>PostgreSQL, MySQL, Oracle PL/SQL, Power BI (DAX), pandas, Matplotlib, schéma en étoile, OLAP, ETL (pygrametl), conception de KPI</p></div>
+    <div><h4>Développement</h4><p>Python, Java, SQL, PHP, JavaScript, HTML/CSS, FastAPI, Spring Boot, React / Next.js, Flutter</p></div>
+    <div><h4>Outils et méthodes</h4><p>Docker, Git, Jupyter Notebook, IBM RSA, StarUML, UML, Merise, Agile/Scrum, MVC, POO</p></div>
+  </div>
+</section>
+
+<section id="parcours">
+  <h2>Parcours</h2>
+  <div class="row"><div class="meta">2024 – 2027</div><div><strong>Licence en informatique de gestion, spécialité BI</strong> – ISGS, Sousse<p>Data warehousing, OLAP, Oracle PL/SQL, PHP/MySQL, Power BI, Python, UML, recherche opérationnelle.</p></div></div>
+  <div class="row"><div class="meta">Août 2026</div><div><strong>Stage au département d’exploitation</strong> – Aéroport Habib Bourguiba, Monastir<p>Découverte de l’organisation des opérations aéroportuaires et observation des procédures de travail.</p></div></div>
+  <div class="row"><div class="meta">2023 – 2024</div><div><strong>1ʳᵉ année de licence en gestion</strong> – FSEGS, Sousse</div></div>
+  <div class="row"><div class="meta">2023</div><div><strong>Baccalauréat, spécialité mathématiques</strong> – Lycée Farhat Hached, M’saken</div></div>
+</section>
+
+<section>
+  <div class="two">
+    <div>
+      <h2>Certifications</h2>
+      <ul>
+        <li>AI Fluency : Framework and Foundations<small>Claude Academy, Anthropic, octobre 2026</small></li>
+        <li>Claude 101<small>Claude Academy, Anthropic, octobre 2026</small></li>
+        <li>Présentation de l’infrastructure cloud<small>Microsoft Learn, mars 2026</small></li>
+        <li>Entrepreneurship Sprint<small>EMUNI University, attestation de participation, avril 2026</small></li>
+        <li>EF SET English Certificate : 68/100 (C1)<small>Anglais</small></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Langues</h2>
+      <ul>
+        <li>Arabe<small>Courant</small></li>
+        <li>Français<small>Courant</small></li>
+        <li>Turc<small>Courant, test de compréhension C1</small></li>
+        <li>Anglais<small>Intermédiaire</small></li>
+        <li>Allemand<small>Débutant</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Je suis disponible pour un stage de fin d’études en data / BI. Écris-moi, je réponds volontiers.</p>
+    <div class="btns">
+      <a class="btn main" href="mailto:Jmaguerislem.14@gmail.com">Jmaguerislem.14@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/jmaguer-islem-008877333/">LinkedIn</a>
+      <a class="btn" href="https://github.com/jmaguerislem">GitHub</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
