@@ -73,10 +73,24 @@ footer p{max-width:50ch;color:var(--muted)}
   .proj,.row{grid-template-columns:1fr}
   nav{justify-content:flex-start}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.orbs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.orbs i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.28;animation:float 14s ease-in-out infinite alternate}
+.orbs i:nth-child(1){width:380px;height:380px;background:var(--accent);top:-80px;left:-60px}
+.orbs i:nth-child(2){width:320px;height:320px;background:var(--warm);top:42%;right:-80px;animation-duration:18s}
+.orbs i:nth-child(3){width:280px;height:280px;background:var(--accent);bottom:-60px;left:30%;animation-duration:22s}
+@keyframes float{to{transform:translate(70px,60px) scale(1.18)}}
+.rot{font:500 1.15rem/1.5 var(--display);margin:0 0 16px;min-height:1.6em}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--warm);margin-left:3px;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.stats li{transition:transform .25s ease}.stats li:hover{transform:translateY(-5px)}
+.btn{transition:transform .2s ease,border-color .2s ease}.btn:hover{transform:translateY(-3px)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.orbs i,.caret{animation:none}.stats li,.btn,.rv{transition:none}}
 </style>
 </head>
 <body>
+<div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="wrap">
 <nav aria-label="Navigation principale">
   <a href="#projets">Projets</a><a href="#competences">Compétences</a><a href="#parcours">Parcours</a><a href="#contact">Contact</a>
@@ -86,6 +100,7 @@ footer p{max-width:50ch;color:var(--muted)}
   <div>
     <h1>Islem Jmaguer</h1>
     <p class="role">Étudiante en informatique de gestion, spécialité Business Intelligence</p>
+    <p class="rot" aria-hidden="true">Je conçois <b id="rot"></b><span class="caret"></span></p>
     <p class="lead">Je conçois des entrepôts de données, des pipelines ETL et des tableaux de bord, puis je construis des applications web et mobiles autour. Je cherche un stage de fin d’études en data / BI.</p>
     <div class="btns">
       <a class="btn main" href="mailto:Jmaguerislem.14@gmail.com">M’écrire</a>
@@ -214,5 +229,15 @@ footer p{max-width:50ch;color:var(--muted)}
     </div>
   </div>
 </footer>
+<script>
+(function(){
+var RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+if(!RM){document.querySelectorAll(".proj,.row").forEach(function(el,i){el.classList.add("rv");el.style.transitionDelay=((i%4)*70)+"ms";io.observe(el)})}
+document.querySelectorAll(".stats b").forEach(function(el){var n=+el.textContent;if(RM)return;el.textContent="0";var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){o.disconnect();var t0=performance.now();(function s(t){var p=Math.min((t-t0)/1100,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s)})(t0)}});o.observe(el)});
+var words=["des entrepôts de données","des pipelines ETL","des tableaux de bord","des applications web et mobiles"],wi=0,ci=0,del=false,rot=document.getElementById("rot");
+if(RM){rot.textContent=words[0]}else{(function tick(){var w=words[wi];ci+=del?-1:1;rot.textContent=w.slice(0,ci);var d=del?35:70;if(!del&&ci===w.length){del=true;d=1400}else if(del&&ci===0){del=false;wi=(wi+1)%words.length;d=300}setTimeout(tick,d)})()}
+})();
+</script>
 </body>
 </html>
